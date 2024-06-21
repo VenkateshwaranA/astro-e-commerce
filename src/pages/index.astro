@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Carts from "../components/Carts";
+import Headr from "../components/Header";
+console.log("Astro.url", Astro.url.href);
+
+const res = await fetch("http://localhost:8080");
+let data = await res.json();
+const response = await fetch("http:localhost:8080/cartlist");
+let resdata = await response.json();
+---
+
+<Layout title="Welcome to Astro.">
+  <Headr items={resdata.getCartItem} />
+  <Carts carts={data.data} client:only="cart">cart</Carts>
+</Layout>
