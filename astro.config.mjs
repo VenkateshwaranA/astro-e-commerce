@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import node from "@astrojs/node";
 
 import react from "@astrojs/react";
@@ -7,9 +7,11 @@ import react from "@astrojs/react";
 export default defineConfig({
   output: "server",
   adapter: node({
-    mode: "middleware"
+    mode: "middleware",
   }),
-  integrations: [react({
-    experimentalReactChildren:true
-  })]
+  integrations: [
+    react({
+      experimentalReactChildren: true,
+    }),
+  ],
 });

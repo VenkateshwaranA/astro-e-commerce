@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import CartItems from "../../components/CartItems";
-const res = await fetch("http:localhost:8080/cartlist");
+export const prerender = false;
+const res = await fetch("http:localhost:3001/cartlist");
 let data = await res.json();
 console.log("CART LIST--->", data);
 ---

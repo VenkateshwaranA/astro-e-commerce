@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/astroDb")
+  .connect("<AtlasMongoURI>")
   .then(() => {
     console.log("db connectes");
   })
@@ -127,6 +127,6 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(8080, () => {
-  console.log("sever started");
+app.listen(3001, (port) => {
+  console.log("sever started" + port);
 });
