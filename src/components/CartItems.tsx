@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import Headr from "./Header";
-export default function CartItems({ cartItems }: { cartItems: any }) {
+export default function CartItems() {
   const [cart, setCart] = useState<any>([]);
   const [order, setOrder] = useState<any>(false);
   useEffect(() => {
-    setCart(cartItems);
+    async function fetchdata() {
+      const res = await fetch("http://localhost:3001/cartlist");
+      let data = await res.json();
+      setCart(data.getCartItem);
+    }
+    fetchdata();
   }, []);
 
   const removeItem = async (item: any) => {
-    let deleted = await fetch("http://localhost:8080/delete/" + item.id, {
+    let deleted = await fetch("http://localhost:3001/delete/" + item.id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +30,7 @@ export default function CartItems({ cartItems }: { cartItems: any }) {
   const handleOrders = async () => {
     try {
       if (cart.length) {
-        await fetch("http://localhost:8080/order", {
+        await fetch("http://localhost:3001/order", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(cart),
@@ -35,12 +40,12 @@ export default function CartItems({ cartItems }: { cartItems: any }) {
         });
       }
     } catch (err) {
-      console.log(err);
+      console.log({err});
     }
   };
   return (
     <>
-      <Headr items={cart} />
+      <Headr carts={cart} />
       {cart.length > 0 ? (
         <>
           <div className="container container-fluid">
@@ -140,5 +145,3 @@ export default function CartItems({ cartItems }: { cartItems: any }) {
     </>
   );
 }
-
-

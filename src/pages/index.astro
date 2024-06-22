@@ -2,15 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 import Carts from "../components/Carts";
 import Headr from "../components/Header";
+// import axios from "axios";
 console.log("Astro.url", Astro.url.href);
-
-const res = await fetch("http://localhost:8080");
-let data = await res.json();
-const response = await fetch("http:localhost:8080/cartlist");
-let resdata = await response.json();
+export const prerender = false;
+// const res = await axios.get("http://localhost:4321");
+// let data = await res.data();
+// const response = await axios.get("http:localhost:4321/cartlist");
+// let resdata = await response.data();
 ---
 
 <Layout title="Welcome to Astro.">
-  <Headr items={resdata.getCartItem} />
-  <Carts carts={data.data} client:only="cart">cart</Carts>
+  <!-- <Headr items={[]} /> -->
+  <Carts client:only="cart">cart</Carts>
 </Layout>

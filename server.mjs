@@ -6,7 +6,9 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/astroDb")
+  .connect(
+    "mongodb+srv://venkateshwaran2316:12334@cluster0.vdp9kpr.mongodb.net/astroDb?retryWrites=true&w=majority&appName=Cluster0"
+  )
   .then(() => {
     console.log("db connectes");
   })
@@ -43,6 +45,15 @@ const cartModel = mongoose.model(cartData, {
 app.get("/", async (req, res) => {
   try {
     let getdata = await ProductModel.find();
+    console.log("ddd", getdata);
+    res.status(200).json({ data: getdata });
+  } catch (error) {
+    console.log("error in get db", error);
+  }
+});
+app.get("/product/:id", async (req, res) => {
+  try {
+    let getdata = await ProductModel.find({ id: req.params.id });
     console.log("ddd", getdata);
     res.status(200).json({ data: getdata });
   } catch (error) {
@@ -127,6 +138,6 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(8080, () => {
+app.listen(3001, () => {
   console.log("sever started");
 });
