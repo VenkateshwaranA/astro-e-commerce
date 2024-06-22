@@ -12,6 +12,6 @@ export const prerender = false;
 ---
 
 <Layout title="Welcome to Astro.">
-  <Headr items={[]} />
-  <Carts carts={[]} client:only="cart">cart</Carts>
+  <!-- <Headr items={[]} /> -->
+  <Carts client:only="cart">cart</Carts>
 </Layout>

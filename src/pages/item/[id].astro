@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import SingleProduct from "../../components/SingleProduct";
-
 export const prerender = false;
 // export const getStaticPaths = async () => {
 //   const res = await fetch("http:localhost:8080");
@@ -18,9 +17,9 @@ export const prerender = false;
 
 const { id } = Astro.params;
 const { product } = Astro.props;
-console.log("id--->", id, product);
+// console.log("id--->", id, product);
 ---
 
 <Layout title="oneItem">
-  <SingleProduct singleProduct={product} client:only />
+  <SingleProduct id={id}  client:only />
 </Layout>
