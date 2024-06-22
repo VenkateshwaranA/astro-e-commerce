@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.client
     ports:
-      - "4321:4321"
+      - "4321:3002"
     depends_on:
       - server
   server:

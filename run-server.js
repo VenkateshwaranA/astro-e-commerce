@@ -6,7 +6,6 @@ const app = express();
 // They should match. The default value is "/".
 console.log("Entry server");
 const base = "/";
-app.use(base, express.static("dist/client/"));
 app.use(ssrHandler);
 
-app.listen(3001);
+app.listen(3002);

@@ -138,6 +138,6 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(3001, (port) => {
-  console.log("sever started" + port);
+app.listen(3001, () => {
+  console.log("sever started");
 });

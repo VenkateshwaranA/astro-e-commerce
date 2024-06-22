@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "server":"node server.mjs",
+    "build:client":"node run-server.js",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
